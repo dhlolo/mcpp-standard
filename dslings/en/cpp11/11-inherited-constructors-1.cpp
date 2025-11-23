@@ -44,11 +44,17 @@ public:
 
 class StudentTest : public Student {
 public:
-
-    D2X_YOUR_ANSWER // Implement Student's helper test class
+    using Student::Student;
+    // D2X_YOUR_ANSWER // Implement Student's helper test class
 
     std::string to_string() const {
         return "{" + id + ", " + name + ", " + std::to_string(age) + ", " + std::to_string(score) + "}";
+    }
+    bool score_valid() const {
+        return score >= 0 && score <= 100;
+    }
+    bool age_valid() const {
+        return age > 0 && age <= 200;
     }
 };
 
@@ -90,7 +96,7 @@ int main() { // Do not directly modify the code in the main function
 
     }
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

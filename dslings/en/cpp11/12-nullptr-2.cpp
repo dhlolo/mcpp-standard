@@ -39,12 +39,12 @@ int main() {
     // 2. Advantages of nullptr in template functions - type deduction safety
     // Observe compiler errors, try to explicitly specify template parameters to resolve errors
     processPointer<int>(clone<int *>(0));
-    processPointer<char>(clone(NULL));
+    processPointer<char>(clone<char *>(NULL));
 
     processPointer<int>(clone(nullptr));
     processPointer<char>(clone(nullptr));
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

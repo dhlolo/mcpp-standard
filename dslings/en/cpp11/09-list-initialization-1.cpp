@@ -32,13 +32,13 @@ struct Object {
 
 int main() {
 
-    Object obj1();
+    Object obj1 = {};
     Object obj2(2);
 
     d2x_assert_eq(obj1.x, 0);
     d2x_assert_eq(obj2.x, 2);
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

@@ -28,18 +28,18 @@ class Account {
     std::string coin;
 public:
 
-    Account(std::string id_) {
-        id = id_;
-        name = "momo";
-        coin = "0元";
+    Account(std::string id_): Account(id_, "momo") {
+        // id = id_;
+        // name = "momo";
+        // coin = "0元";
 
         D2X_DONT_DELETE_THIS(construction_counter++);
     }
 
-    Account(std::string id_, std::string name_) {
-        id = id_;
-        name = name_;
-        coin = "0元";
+    Account(std::string id_, std::string name_): Account(id_,name_, 0) {
+        // id = id_;
+        // name = name_;
+        // coin = "0元";
 
         D2X_DONT_DELETE_THIS(construction_counter++);
     }
@@ -47,7 +47,7 @@ public:
     Account(std::string id_, std::string name_, int coin_) {
         id = id_;
         name = name_;
-        coin = std::to_string(coin_) + "元";
+        coin = std::to_string(coin_) + "原石";
 
         D2X_DONT_DELETE_THIS(construction_counter++);
     }
@@ -79,7 +79,7 @@ int main() { // Do not modify the code in the main function
         "Account { id: 0000, name: GImpact, coin: 648原石 }"
     );
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

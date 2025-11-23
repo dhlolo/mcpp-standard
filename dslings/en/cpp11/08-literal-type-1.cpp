@@ -20,7 +20,7 @@
 
 struct Vector {
     int x, y;
-    Vector(int x_, int y_) : x(x_), y(y_) { }
+    constexpr Vector(int x_, int y_) : x(x_), y(y_) { }
 };
 
 constexpr Vector add(const Vector& v1, const Vector& v2) {
@@ -34,7 +34,7 @@ int main() {
 
     std::cout << "[ " << v3.x << ", " << v3.y << " ]" << std::endl;
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

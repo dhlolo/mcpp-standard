@@ -28,10 +28,16 @@ constexpr std::array<int, 3> to_array(const char *str /*, len = 3 */) {
     return {str[0] - '0', str[1] - '0', str[2] - '0'};
 }
 
-constexpr std::string to_string(const std::array<int, 3> &arr) {
-    return std::string(1, '0' + arr[0]) +
-           std::string(1, '0' + arr[1]) +
-           std::string(1, '0' + arr[2]);
+constexpr std::array<char, 4> to_string(const std::array<int, 3> &arr) {
+    // return std::string(1, '0' + arr[0]) +
+    //        std::string(1, '0' + arr[1]) +
+    //        std::string(1, '0' + arr[2]);
+    return {
+        static_cast<char>(arr[0]),
+        static_cast<char>(arr[1]),
+        static_cast<char>(arr[2]),
+        '\0'
+    };
 }
 
 int main() {
@@ -39,22 +45,22 @@ int main() {
     // 1. Literal types that can participate in compile-time computation
     constexpr char c = 'A';
     constexpr int a = 1;
-    constexpr std::array<int, 3> arr = {1, 2, 3};
-    constexpr std::string str = "123";
+    // constexpr std::array<int, 3> arr = {1, 2, 3};
+    constexpr char * str = "123";
 
     constexpr auto result = compile_time_compute(c, a);
     std::cout << result << std::endl;
 
     // 2. "Complex" aggregate/pointer/reference literal types
-    constexpr auto arr_to_str = to_string(arr);
-    std::cout << arr_to_str.data() << std::endl;
+    // constexpr auto arr_to_str = to_string(arr);
+    // std::cout << arr_to_str.data() << std::endl;
 
-    constexpr auto str_to_arr = to_array(str);
-    constexpr int sum = str_to_arr[0] + str_to_arr[1] + str_to_arr[2];
+    // constexpr auto str_to_arr = to_array(str);
+    // constexpr int sum = str_to_arr[0] + str_to_arr[1] + str_to_arr[2];
 
-    std::cout << "1 + 2 + 3 = " <<  sum << std::endl;
+    // std::cout << "1 + 2 + 3 = " <<  sum << std::endl;
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

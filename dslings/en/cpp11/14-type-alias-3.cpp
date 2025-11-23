@@ -8,7 +8,8 @@
 //
 // Docs:
 //   - https://en.cppreference.com/w/cpp/language/type_alias
-//   - https://github.com/Sunrisepeak/mcpp-standard/blob/main/book/src/cpp11/14-type-alias.md
+//   -
+//   https://github.com/Sunrisepeak/mcpp-standard/blob/main/book/src/cpp11/14-type-alias.md
 //
 // Discussion Forum: http://forum.d2learn.org/category/20
 //
@@ -20,20 +21,20 @@
 #include <d2x/common.hpp>
 #include <type_traits>
 
+template <typename T>
+using my_add_pointer_t = typename std::add_pointer<T>::type;
+
 int main() {
 
-    template <typename T>
-    D2X_YOUR_ANSWER my_add_pointer_t = typename std::add_pointer<T>;
+  int c = 20;
+  my_add_pointer_t<decltype(c)> ptr = &c;
 
-    int c = 20;
-    my_add_pointer_t<decltype(c)> ptr = &c;
+  bool ok = std::is_same<my_add_pointer_t<int>, int *>::value;
 
-    bool ok = std::is_same<my_add_pointer_t<int>, int*>::value;
+  d2x_assert(ok);
+  d2x_assert_eq(*ptr, 20);
 
-    d2x_assert(ok);
-    d2x_assert_eq(*ptr, 20);
+//   D2X_WAIT
 
-    D2X_WAIT
-
-    return 0;
+  return 0;
 }

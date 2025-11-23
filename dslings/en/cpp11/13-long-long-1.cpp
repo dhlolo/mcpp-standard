@@ -24,10 +24,10 @@
 int main() {
 
     // 1. Get boundary values of integer types
-    auto maxInt = std::numeric_limits<long long>::max();
-    auto maxLL = std::numeric_limits<int>::max();
-    auto minLL = std::numeric_limits<unsigned long long>::min();
-    auto maxULL = std::numeric_limits<unsigned int>::max();
+    auto maxInt = std::numeric_limits<int>::max();
+    auto maxLL = std::numeric_limits<long long>::max();
+    auto minLL = std::numeric_limits<long long>::min();
+    auto maxULL = std::numeric_limits<unsigned long long>::max();
 
     d2x_assert_eq(maxInt, 2147483647);
     d2x_assert_eq(maxLL, 9223372036854775807LL);
@@ -35,10 +35,10 @@ int main() {
     d2x_assert_eq(maxULL, 18446744073709551615ULL);
 
     // 2. Large integer application - representing world population
-    int currentPopulation = 7800000000;
+    unsigned long long currentPopulation = 7800000000;
     d2x_assert_eq(currentPopulation, 7800000000ULL);
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

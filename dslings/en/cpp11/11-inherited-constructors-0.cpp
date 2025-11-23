@@ -25,17 +25,26 @@ public:
     ObjectBase(int x) { std::cout << "ObjectBase::ObjectBase(int): " << x << std::endl; }
     ObjectBase(double x) { std::cout << "ObjectBase::ObjectBase(double): " << x << std::endl; }
 
-    D2X_YOUR_ANSWER
+    ObjectBase(std::initializer_list<double> list) {
+        std::cout << "ObjectBase::ObjectBase(initializer_list): ";
+        for (const auto& val : list) {
+            std::cout << val << " ";
+        }
+        std::cout << std::endl;
+    }
+    // D2X_YOUR_ANSWER
+    // ObjectBase(int x) { std::cout << "ObjectBase::ObjectBase(double): " << x << std::endl; }
 
     void info() const { std::cout << "ObjectBase: " << this << std::endl; }
 };
 
 class ObjectA : public ObjectBase {
 public:
-    ObjectA(int x) : ObjectBase(x) { std::cout << "ObjectA::ObjectA(int)" << std::endl; }
-    ObjectA(double y) : ObjectBase(y) { std::cout << "ObjectA::ObjectA(double)" << std::endl; }
+    using ObjectBase::ObjectBase;
+    // ObjectA(int x) : ObjectBase(x) { std::cout << "ObjectA::ObjectA(int)" << std::endl; }
+    // ObjectA(double y) : ObjectBase(y) { std::cout << "ObjectA::ObjectA(double)" << std::endl; }
 
-    D2X_YOUR_ANSWER
+    // D2X_YOUR_ANSWER
 
     void tips_a() const {
         std::cout << "ObjectA: add constructors to ObjectA" << std::endl;
@@ -66,7 +75,7 @@ int main() { // Do not directly modify the code in the main function
     a1.tips_a();
     b1.tips_b();
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

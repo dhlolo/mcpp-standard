@@ -27,11 +27,11 @@ auto add1(double a, int b) -> int {
 }
 
 template<typename T1, typename T2>
-auto add2(const T1 &a, const T2 &b) -> D2X_YOUR_ANSWER {
+auto add2(const T1 &a, const T2 &b) -> decltype(a + b) {
     return a + b;
 }
 
-auto add3 = [](double a, double b) -> D2X_YOUR_ANSWER {
+auto add3 = [](double a, double b) -> int {
     return a + b;
 };
 
@@ -43,7 +43,7 @@ int main() {
     d2x_assert_eq(add2(1, 2.1), 3.1);
     d2x_assert_eq(add3(1.1, 2.1), 3);
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

@@ -39,22 +39,22 @@ int main() {
     // Type deduction for obj and (obj)
     type_check = std::is_same<decltype(obj), const Object>::value;
     d2x_assert(type_check); type_check = false; // dont change this line
-    type_check = std::is_same<decltype((obj)), D2X_YOUR_ANSWER>::value;
+    type_check = std::is_same<decltype((obj)), const Object &>::value;
     d2x_assert(type_check); type_check = false; // dont change this line
 
     // Type deduction for obj.a and (obj.a)
-    type_check = std::is_same<decltype(obj.a), D2X_YOUR_ANSWER>::value;
+    type_check = std::is_same<decltype(obj.a), const int>::value;
     d2x_assert(type_check); type_check = false; // dont change this line
-    type_check = std::is_same<decltype((obj.a)), D2X_YOUR_ANSWER>::value;
+    type_check = std::is_same<decltype((obj.a)), const int &>::value;
     d2x_assert(type_check); type_check = false; // dont change this line
 
     // Type deduction for obj.b and (obj.b)
-    type_check = std::is_same<decltype(obj.b), D2X_YOUR_ANSWER>::value;
+    type_check = std::is_same<decltype(obj.b), double>::value;
     d2x_assert(type_check); type_check = false; // dont change this line
-    type_check = std::is_same<decltype((obj.b)), D2X_YOUR_ANSWER>::value;
+    type_check = std::is_same<decltype((obj.b)), const double &>::value;
     d2x_assert(type_check); type_check = false; // dont change this line
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

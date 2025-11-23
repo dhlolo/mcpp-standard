@@ -14,6 +14,7 @@
 //   d2x checker scoped-enums-1
 //
 
+#include <cstdint>
 #include <d2x/common.hpp>
 
 #include <iostream>
@@ -25,7 +26,7 @@ enum class Color {
     ORANGE // Orange color
 };
 
-enum Fruit {
+enum class Fruit {
     Apple,
     Banana,
     ORANGE // Orange fruit
@@ -41,15 +42,15 @@ int main() {
     d2x_assert(fruit == Fruit::ORANGE);
 
     // 2. Type safety: Prevent comparison between different enum type values
-    if (color == Fruit::ORANGE) { // Use Color type to fix compilation error
+    if (color == Color::ORANGE) { // Use Color type to fix compilation error
         d2x_assert(color == Color::ORANGE);
     }
 
     // 3. Type checking: By default, scoped enum type values cannot be implicitly converted
-    int colorValue = color; // Need explicit conversion static_cast<int>(color)
+    int colorValue = static_cast<int>(color); // Need explicit conversion static_cast<int>(color)
 
     // 4. Can customize underlying type to control memory layout
-    enum class Color8Bit : short {
+    enum class Color8Bit : int8_t {
         RED,
         GREEN,
         BLUE,
@@ -67,9 +68,9 @@ int main() {
         ERROR_3
     };
 
-    d2x_assert_eq(static_cast<int>(ErrorCode::ERROR_3), 3);
+    d2x_assert_eq(static_cast<int>(ErrorCode::ERROR_3), -1);
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

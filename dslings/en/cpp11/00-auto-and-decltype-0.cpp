@@ -26,21 +26,21 @@ int main() {
     int a = 1;
     auto a1 = a; // a1's type is int
     int b = 2;
-    D2X_YOUR_ANSWER b1 = b;
+    auto b1 = b;
 
     decltype(b) b2 = b; // b2's type is int
-    D2X_YOUR_ANSWER a2 = a;
+    decltype(a) a2 = a;
 
     char c = 'c';
-    D2X_YOUR_ANSWER c1 = c;
-    D2X_YOUR_ANSWER c2 = c;
+    auto c1 = c;
+    decltype(c) c2 = c;
 
     d2x_assert_eq(a, a1);
     d2x_assert_eq(a1, a2);
     d2x_assert_eq(b, b1);
     d2x_assert_eq(b1, b2);
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

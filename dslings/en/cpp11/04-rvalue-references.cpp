@@ -43,7 +43,7 @@ int main() { // Disable compiler optimization
         std::cout << "--------Code modifiable area - Start--------" << std::endl;
 
 
-        const Object &objRef = Object(); // Extend temporary object lifetime
+        Object &&objRef = Object(); // Extend temporary object lifetime
 
 
         std::cout << "--------Code modifiable area - End--------" << std::endl;
@@ -53,7 +53,7 @@ int main() { // Disable compiler optimization
         d2x_assert((&objRef == object_address));
     }
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

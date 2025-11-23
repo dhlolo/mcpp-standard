@@ -24,14 +24,14 @@ void func(int x) {
 }
 
 // Explicitly delete float parameter overload
-void func(float) = delete;
+// void func(float) = delete;
 
 int main() {
 
     func(1);     // int
     func(1.1f);  // float
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

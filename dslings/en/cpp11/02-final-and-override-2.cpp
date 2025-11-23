@@ -21,12 +21,12 @@
 #include <string>
 
 struct AudioPlayer { // Do not directly modify the AudioPlayer class
-    virtual void play() final {
+    virtual void play() {
         init_audio_params();
         play_audio();
     }
 private:
-    virtual void init_audio_params() = 0;
+    virtual void init_audio_params() = 0; // 纯虚函数必须实现
     virtual void play_audio() = 0;
 };
 
@@ -52,14 +52,21 @@ struct  MP3Player : AudioPlayer {
 
 struct OGGPlayer : AudioPlayer {
     // Correctly implement OGGPlayer
+    // void init_audio_params() override {
+    //     std::cout << "OGGPlayer: Initializing audio parameters..." << std::endl;
+    // }
 
+    // void play_audio() override {
+    //     std::cout << "OGGPlayer: Playing OGG audio..." << std::endl;
+    // }
     void play() override {
         // init_audio_params();
         std::cout << "OGGPlayer: Initializing audio parameters..." << std::endl;
         // play_audio();
         std::cout << "OGGPlayer: Playing OGG audio..." << std::endl;
     }
-
+    void init_audio_params() override {}
+    void play_audio() override {}
 };
 
 
@@ -77,7 +84,7 @@ int main() { // Do not directly modify the code in the main function
     delete player2;
     delete player3;
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

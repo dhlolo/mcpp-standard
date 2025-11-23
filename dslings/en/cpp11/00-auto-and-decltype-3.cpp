@@ -30,7 +30,7 @@ auto add_func(int a, double b) -> decltype(a + b) {
 }
 
 template<typename T1, typename T2>
-D2X_YOUR_ANSWER minus_func(T1 a, T2 b) -> D2X_YOUR_ANSWER {
+auto minus_func(T1 a, T2 b) -> decltype(a - b) {
     return a - b;
 }
 
@@ -40,7 +40,7 @@ int main() {
     d2x_assert_eq(minus_func(2, 1), 1);
     d2x_assert_eq(minus_func(1, 2.1), -1.1);
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

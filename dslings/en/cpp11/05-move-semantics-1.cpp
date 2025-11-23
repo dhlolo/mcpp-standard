@@ -88,13 +88,13 @@ int main() { // No compiler optimization
 
         d2x_assert_eq(move_assignment_counter, 2);
 
-        buff2 = buff1; // Case 3: Explicit move assignment
+        buff2 = std::move(buff1); // Case 3: Explicit move assignment
 
         d2x_assert_eq(move_assignment_counter, 3);
 
     }
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

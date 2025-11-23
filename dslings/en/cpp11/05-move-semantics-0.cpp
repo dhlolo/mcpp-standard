@@ -20,6 +20,7 @@
 
 struct Buffer {
     int *data;
+    int move_assignment_counter = 0;
     Buffer() : data { new int[2] {0, 1} } {
         std::cout << "Buffer():" << data << std::endl;
     }
@@ -38,6 +39,18 @@ struct Buffer {
             std::cout << "~Buffer():" << data << std::endl;
             delete[] data;
         }
+    }
+    Buffer & operator=(Buffer&& other) {
+        move_assignment_counter++;
+        std::cout << "Buffer& operator=(Buffer&&):" << data << std::endl;
+        if (this != &other) {
+            delete[] data;
+            data = other.data;
+            other.data = nullptr; // Invalidate the pointer of the original object
+        }
+        return *this;
+        // if (this != &other) data = std::move(other.data);
+        // return *this;
     }
     const int * data_ptr() const { return data; }
 };
@@ -59,18 +72,19 @@ int main() {
 
         d2x_assert(buff1DataPtr == buff2DataPtr);
 
-        Buffer buff3 = buff2;
+        Buffer buff3;
+        buff3 = std::move(buff2);
         auto buff3DataPtr = buff3.data_ptr();
 
         d2x_assert(buff2DataPtr == buff3DataPtr);
 
-        Buffer buff4 = process(buff3);
+        Buffer buff4 = process(std::move(buff3));
         auto buff4DataPtr = buff4.data_ptr();
 
         d2x_assert(buff3DataPtr == buff4DataPtr);
     }
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

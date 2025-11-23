@@ -29,22 +29,22 @@
 //
 
 #include <d2x/common.hpp>
+#include <iostream>
 
 // You can observe "real-time" changes in the console when modifying code
-
 int main() {
 
-    std::cout << "hello, mcpp!" << std:endl; // 0. Fix this compilation error
+    std::cout << "hello, mcpp!" << std::endl; // 0. Fix this compilation error
 
-    int a = 1.1; // 1. Fix this runtime error, change int to double to pass the check
+    double a = 1.1; // 1. Fix this runtime error, change int to double to pass the check
 
     d2x_assert_eq(a, 1.1); // 2. Runtime checkpoint, need to fix code to pass all checkpoints (cannot directly delete checkpoint code)
 
-    D2X_YOUR_ANSWER b = a; // 3. Fix this compilation error, give b an appropriate type
+    int b = a; // 3. Fix this compilation error, give b an appropriate type
 
     d2x_assert_eq(b, 1); // 4. Runtime checkpoint 2
 
-    D2X_WAIT // 5. Delete or comment out this macro to proceed to the next exercise (project formal code practice)
+    // D2X_WAIT // 5. Delete or comment out this macro to proceed to the next exercise (project formal code practice)
 
     return 0;
 }

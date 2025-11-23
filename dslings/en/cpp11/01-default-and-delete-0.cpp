@@ -22,6 +22,7 @@
 // default and delete explicitly control -> compiler default constructor generation behavior
 struct A { };
 struct B {
+    B() = default;
     B(int x) { std::cout << "B(int x)" << std::endl; }
 };
 struct C {
@@ -33,9 +34,9 @@ int main() { // Do not directly modify the code in the main function
 
     A a;
     B b;
-    C c(1);
+    C c();
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

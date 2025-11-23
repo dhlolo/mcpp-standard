@@ -40,7 +40,7 @@ int main() {
     }
     std::cout << std::endl;
 
-    D2X_YOUR_ANSWER v2 = v.begin();
+    auto v2 = v.begin();
     for (; v2 != v.end(); ++v2) {
         std::cout << *v2 << " ";
     }
@@ -48,7 +48,7 @@ int main() {
 
     auto minus_func = [](int a, int b) { return a - b; };
 
-    std::vector<std::function<D2X_YOUR_ANSWER>> funcVec = {
+    std::vector<std::function<decltype(add_func)>> funcVec = {
         add_func,
         minus_func
     };
@@ -56,7 +56,7 @@ int main() {
     d2x_assert_eq(funcVec[0](1, 2), 3);
     d2x_assert_eq(funcVec[1](1, 2), -1);
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }

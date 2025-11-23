@@ -31,11 +31,11 @@ struct A {
 };
 
 struct B : A {
-    void func1()  {
+    void func1() override {
         std::cout << "B::func1()" << std::endl;
     }
 
-    void func2() override {
+    void func2() {
         std::cout << "B::func2()" << std::endl;
     }
 };
@@ -51,7 +51,7 @@ int main() {
     a->func1(); // B::func1()
     a->func2(); // A::func2()
 
-    D2X_WAIT
+    // D2X_WAIT
 
     return 0;
 }
